@@ -1,4 +1,5 @@
-import { login, signup, signInWithGoogle } from './actions'
+import { login, signup } from './actions'
+import { GoogleSignInButton } from '@/components/google-signin-button'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
@@ -40,9 +41,7 @@ export default async function LoginPage({ searchParams }: { searchParams: Promis
                                     <span className="bg-background px-2 text-muted-foreground">Or continue with</span>
                                 </div>
                             </div>
-                            <Button formAction={signInWithGoogle} variant="secondary" className="w-full" type="submit" formNoValidate>
-                                Sign in with Google
-                            </Button>
+                            <GoogleSignInButton />
                         </div>
                     </form>
                 </CardContent>
