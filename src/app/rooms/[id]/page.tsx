@@ -13,9 +13,6 @@ export default async function RoomPage({ params }: { params: Promise<{ id: strin
     if (!user) redirect('/login')
 
     const { id: roomId } = await params
-    console.log('--- RoomPage Debug ---')
-    console.log('RoomID from params:', roomId)
-    console.log('User ID:', user.id)
 
     // Fetch Room
     const { data: room, error } = await supabase
@@ -23,13 +20,6 @@ export default async function RoomPage({ params }: { params: Promise<{ id: strin
         .select('*, participants(*, profiles:profiles!participants_user_id_fkey(*))')
         .eq('id', roomId)
         .single()
-
-    if (error) {
-        console.error('Supabase Error fetching room:', error)
-    }
-    if (!room) {
-        console.error('Room not found in DB')
-    }
 
     if (error || !room) {
         return notFound()

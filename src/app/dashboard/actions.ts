@@ -34,12 +34,9 @@ export async function createRoom(prevState: any, formData: FormData) {
 
     if (partError) {
         // cleanup?
-        console.error('Error adding creator to participants:', partError)
+        console.error(partError)
         return { error: 'Failed to join room' }
     }
-
-    console.log('--- Create Room Success ---')
-    console.log('Redirecting to:', `/rooms/${room.id}`)
 
     revalidatePath('/dashboard')
     redirect(`/rooms/${room.id}`)
