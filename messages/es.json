@@ -1,0 +1,62 @@
+{
+    "Common": {
+        "loading": "Cargando...",
+        "error": "Error",
+        "save": "Guardar",
+        "cancel": "Cancelar",
+        "back": "Atrás"
+    },
+    "Welcome": {
+        "title": "¡Bienvenido!",
+        "subtitle": "¿Cómo deberíamos llamarte?",
+        "fullName": "Nombre Completo",
+        "placeholder": "Santa Claus",
+        "getStarted": "Comenzar"
+    },
+    "Landing": {
+        "title": "Intercambio de Regalos Secret Santa",
+        "subtitle": "Crea momentos mágicos con amigos y familia. La forma más fácil de organizar tu intercambio de regalos navideño.",
+        "getStarted": "Comenzar",
+        "login": "Iniciar Sesión"
+    },
+    "Auth": {
+        "loginTitle": "Bienvenido de nuevo",
+        "loginDescription": "Inicia sesión para gestionar tus intercambios",
+        "emailLabel": "Correo",
+        "passwordLabel": "Contraseña",
+        "signIn": "Iniciar Sesión",
+        "signUp": "Registrarse",
+        "orContinueWith": "O continuar con",
+        "googleSignIn": "Iniciar sesión con Google"
+    },
+    "Dashboard": {
+        "title": "Panel Principal",
+        "createRoom": "Crear Sala",
+        "joinRoom": "Unirse a Sala",
+        "yourStatus": "Tu Estado",
+        "roomName": "Nombre de la Sala",
+        "status": "Estado",
+        "create": "Crear",
+        "join": "Unirse"
+    },
+    "Room": {
+        "participants": "Participantes",
+        "waitingForPlayers": "Esperando jugadores...",
+        "inviteMessage": "Invita a amigos compartiendo el ID de la Sala:",
+        "secretSantaFor": "Eres el \"Secret Santa\" de:",
+        "theirWishlist": "Su Lista de Deseos:",
+        "yourWishlist": "Tu Lista de Deseos",
+        "admin": "Admin",
+        "startExchange": "Iniciar Intercambio",
+        "statusOpen": "ABIERTA",
+        "statusClosed": "CERRADA",
+        "statusPaired": "EMPAREJADA"
+    },
+    "Wishlist": {
+        "title": "Lista de Deseos",
+        "yourTitle": "Tu Lista de Deseos",
+        "addItem": "Agregar Artículo",
+        "placeholder": "ej. Suéter Rojo, talla M",
+        "empty": "Sin artículos aún."
+    }
+}

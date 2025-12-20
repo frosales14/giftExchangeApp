@@ -1,8 +1,11 @@
-import Link from 'next/link'
+import { Link } from '@/i18n/routing'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card'
+import { getTranslations } from 'next-intl/server'
 
-export default function AuthCodeErrorPage() {
+export default async function AuthCodeErrorPage() {
+    const t = await getTranslations('Common');
+    // ...
     return (
         <div className="flex h-screen items-center justify-center bg-red-50 dark:bg-red-950/20">
             <Card className="w-full max-w-md">

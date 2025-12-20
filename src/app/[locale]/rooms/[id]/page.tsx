@@ -1,18 +1,20 @@
 import { createClient } from '@/lib/supabase/server'
-import { notFound, redirect } from 'next/navigation'
+import { redirect } from '@/i18n/routing'
+import { notFound } from 'next/navigation'
 import { Badge } from '@/components/ui/badge'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
-import { Button } from '@/components/ui/button'
 import { Separator } from '@/components/ui/separator'
 import { Wishlist } from './wishlist'
 import { StartExchangeButton } from '@/components/start-exchange-button'
+import { getTranslations } from 'next-intl/server'
 
 export default async function RoomPage({ params }: { params: Promise<{ id: string }> }) {
     const supabase = await createClient()
     const { data: { user } } = await supabase.auth.getUser()
-    if (!user) redirect('/login')
+    if (!user) redirect({ href: '/login', locale: 'en' })
 
     const { id: roomId } = await params
+    const t = await getTranslations('Room');
 
     // Fetch Room
     const { data: room, error } = await supabase
@@ -44,13 +46,20 @@ export default async function RoomPage({ params }: { params: Promise<{ id: strin
     const isAdmin = room.created_by === user.id
     const isClosed = room.status !== 'open'
 
+    // Status translation map
+    const statusMap: Record<string, string> = {
+        'open': t('statusOpen'),
+        'closed': t('statusClosed'),
+        'paired': t('statusPaired') // in case status is stored as paired
+    }
+
     return (
         <div className="container mx-auto p-8 space-y-8">
             <div className="flex justify-between items-center">
                 <div>
                     <h1 className="text-3xl font-bold">{room.name}</h1>
                     <Badge variant={room.status === 'open' ? 'default' : 'secondary'} className="mt-2 uppercase">
-                        {room.status}
+                        {statusMap[room.status] || room.status}
                     </Badge>
                 </div>
                 {(isAdmin && room.status === 'open') && (
@@ -63,7 +72,7 @@ export default async function RoomPage({ params }: { params: Promise<{ id: strin
                 <div className="space-y-6">
                     {isClosed ? (
                         <div className="bg-green-50 dark:bg-green-950 p-6 rounded-lg border border-green-200 dark:border-green-900">
-                            <h2 className="text-xl font-semibold mb-4 text-green-800 dark:text-green-100">You are the Secret Santa for:</h2>
+                            <h2 className="text-xl font-semibold mb-4 text-green-800 dark:text-green-100">{t('secretSantaFor')}</h2>
                             {targetProfile ? (
                                 <div className="flex items-center gap-4 mb-4">
                                     <Avatar className="w-16 h-16">
@@ -79,28 +88,28 @@ export default async function RoomPage({ params }: { params: Promise<{ id: strin
                             )}
 
                             <Separator className="my-4" />
-                            <h3 className="font-semibold mb-2">Their Wishlist:</h3>
+                            <h3 className="font-semibold mb-2">{t('theirWishlist')}</h3>
                             <Wishlist items={targetWishlist} readOnly />
                         </div>
                     ) : (
                         <div className="bg-blue-50 dark:bg-blue-950 p-6 rounded-lg border border-blue-200 dark:border-blue-900">
-                            <h2 className="text-xl font-semibold mb-2 text-blue-800 dark:text-blue-100">Waiting for players...</h2>
+                            <h2 className="text-xl font-semibold mb-2 text-blue-800 dark:text-blue-100">{t('waitingForPlayers')}</h2>
                             <p className="text-blue-600 dark:text-blue-200">
-                                Invite friends by sharing the Room ID: <code className="bg-white/50 px-2 py-1 rounded select-all">{roomId}</code>
+                                {t('inviteMessage')} <code className="bg-white/50 px-2 py-1 rounded select-all">{roomId}</code>
                             </p>
                         </div>
                     )}
 
                     {/* Your Wishlist */}
                     <div>
-                        <h3 className="text-lg font-semibold mb-2">Your Wishlist</h3>
+                        <h3 className="text-lg font-semibold mb-2">{t('yourWishlist')}</h3>
                         <Wishlist roomId={roomId} items={currentUserParticipant?.wishlist || []} />
                     </div>
                 </div>
 
                 {/* Right Column: Participants */}
                 <div className="space-y-4">
-                    <h3 className="text-lg font-semibold">Participants ({room.participants.length})</h3>
+                    <h3 className="text-lg font-semibold">{t('participants')} ({room.participants.length})</h3>
                     <div className="grid gap-4">
                         {room.participants.map((p: any) => (
                             <div key={p.user_id} className="flex items-center gap-3 p-3 bg-muted rounded-lg">
@@ -110,7 +119,7 @@ export default async function RoomPage({ params }: { params: Promise<{ id: strin
                                 </Avatar>
                                 <div>
                                     <p className="font-medium">{p.profiles?.full_name || 'Santa Helper'}</p>
-                                    {p.user_id === room.created_by && <Badge variant="outline" className="text-xs">Admin</Badge>}
+                                    {p.user_id === room.created_by && <Badge variant="outline" className="text-xs">{t('admin')}</Badge>}
                                 </div>
                             </div>
                         ))}

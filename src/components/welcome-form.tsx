@@ -1,26 +1,28 @@
 'use client'
 
-import { useFormState } from 'react-dom'
-import { updateProfile } from '@/app/welcome/actions'
+import { useActionState } from 'react'
+import { updateProfile } from '@/app/[locale]/welcome/actions'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
+import { useTranslations } from 'next-intl'
 
 const initialState = {
     error: '',
 }
 
 export function WelcomeForm() {
-    const [state, formAction] = useFormState(updateProfile, initialState)
+    const [state, formAction] = useActionState(updateProfile, initialState)
+    const t = useTranslations('Welcome');
 
     return (
-        <form action={formAction} className="space-y-4">
+        <form action={formAction} className="space-y-4" suppressHydrationWarning>
             <div className="space-y-2">
-                <Label htmlFor="fullName">Full Name</Label>
-                <Input id="fullName" name="fullName" required placeholder="Santa Claus" />
+                <Label htmlFor="fullName">{t('fullName')}</Label>
+                <Input id="fullName" name="fullName" required placeholder={t('placeholder')} />
             </div>
             {state?.error && <p className="text-red-500 text-sm">{state.error}</p>}
-            <Button type="submit" className="w-full">Get Started</Button>
+            <Button type="submit" className="w-full">{t('getStarted')}</Button>
         </form>
     )
 }

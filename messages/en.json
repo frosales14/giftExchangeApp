@@ -1,0 +1,62 @@
+{
+    "Common": {
+        "loading": "Loading...",
+        "error": "Error",
+        "save": "Save",
+        "cancel": "Cancel",
+        "back": "Back"
+    },
+    "Welcome": {
+        "title": "Welcome!",
+        "subtitle": "Let's get to know you better. What should we call you?",
+        "fullName": "Full Name",
+        "placeholder": "Santa Claus",
+        "getStarted": "Get Started"
+    },
+    "Landing": {
+        "title": "Secret Santa Gift Exchange",
+        "subtitle": "Create magical moments with friends and family. The easiest way to organize your holiday gift exchange.",
+        "getStarted": "Get Started",
+        "login": "Login"
+    },
+    "Auth": {
+        "loginTitle": "Welcome Back",
+        "loginDescription": "Sign in to manage your gift exchanges",
+        "emailLabel": "Email",
+        "passwordLabel": "Password",
+        "signIn": "Sign In",
+        "signUp": "Sign Up",
+        "orContinueWith": "Or continue with",
+        "googleSignIn": "Sign in with Google"
+    },
+    "Dashboard": {
+        "title": "Dashboard",
+        "createRoom": "Create Room",
+        "joinRoom": "Join Room",
+        "yourStatus": "Your Status",
+        "roomName": "Room Name",
+        "status": "Status",
+        "create": "Create",
+        "join": "Join"
+    },
+    "Room": {
+        "participants": "Participants",
+        "waitingForPlayers": "Waiting for players...",
+        "inviteMessage": "Invite friends by sharing the Room ID:",
+        "secretSantaFor": "You are the \"Secret Santa\" for:",
+        "theirWishlist": "Their Wishlist:",
+        "yourWishlist": "Your Wishlist",
+        "admin": "Admin",
+        "startExchange": "Start Exchange",
+        "statusOpen": "OPEN",
+        "statusClosed": "CLOSED",
+        "statusPaired": "PAIRED"
+    },
+    "Wishlist": {
+        "title": "Wishlist",
+        "yourTitle": "Your Wishlist",
+        "addItem": "Add Item",
+        "placeholder": "e.g. Red Sweater, size M",
+        "empty": "No items yet."
+    }
+}

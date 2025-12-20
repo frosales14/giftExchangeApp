@@ -1,19 +1,19 @@
 import { createClient } from '@/lib/supabase/server'
-import { redirect } from 'next/navigation'
-import Link from 'next/link'
+import { redirect } from '@/i18n/routing'
+import { Link } from '@/i18n/routing'
 import { CreateRoomDialog } from '@/components/create-room-dialog'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from "@/components/ui/card"
-import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
-import { joinRoom } from './actions'
+import { Card, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
 import { JoinRoomForm } from '@/components/join-room-form'
+import { getTranslations } from 'next-intl/server'
+import { LanguageSwitcher } from '@/components/language-switcher'
 
 export default async function DashboardPage() {
     const supabase = await createClient()
+    const t = await getTranslations('Dashboard');
 
     // 1. Get User
     const { data: { user } } = await supabase.auth.getUser()
-    if (!user) redirect('/login')
+    if (!user) redirect({ href: '/login', locale: 'en' })
 
     // 2. Get User Profile (optional, to greet)
     // const { data: profile } = await supabase.from('profiles').select('*').eq('id', user.id).single()
@@ -29,8 +29,11 @@ export default async function DashboardPage() {
     return (
         <div className="container mx-auto p-8 space-y-8">
             <header className="flex justify-between items-center">
-                <h1 className="text-3xl font-bold tracking-tight">Dashboard</h1>
-                <CreateRoomDialog />
+                <h1 className="text-3xl font-bold tracking-tight">{t('title')}</h1>
+                <div className="flex items-center gap-2">
+                    <LanguageSwitcher />
+                    <CreateRoomDialog />
+                </div>
             </header>
 
             <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
@@ -40,7 +43,7 @@ export default async function DashboardPage() {
                         <Card className="hover:bg-muted/50 transition-colors cursor-pointer">
                             <CardHeader>
                                 <CardTitle>{room.name}</CardTitle>
-                                <CardDescription>Status: {room.status}</CardDescription>
+                                <CardDescription>{t('status')}: {room.status}</CardDescription>
                             </CardHeader>
                         </Card>
                     </Link>

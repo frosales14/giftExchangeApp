@@ -6,16 +6,18 @@ import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Trash2, Gift } from 'lucide-react'
+import { useTranslations } from 'next-intl'
 
 export function Wishlist({ roomId, items, readOnly = false }: { roomId?: string, items: string[], readOnly?: boolean }) {
     const [newItem, setNewItem] = useState('')
+    const t = useTranslations('Wishlist');
 
     return (
         <Card>
             <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                     <Gift className="w-5 h-5" />
-                    Wishlist
+                    {readOnly ? t('title') : t('yourTitle')}
                 </CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
@@ -30,12 +32,12 @@ export function Wishlist({ roomId, items, readOnly = false }: { roomId?: string,
                     >
                         <Input
                             name="item"
-                            placeholder="I want..."
+                            placeholder={t('placeholder')}
                             value={newItem}
                             onChange={(e) => setNewItem(e.target.value)}
                             disabled={items.length >= 5}
                         />
-                        <Button type="submit" disabled={items.length >= 5 || !newItem}>Add</Button>
+                        <Button type="submit" disabled={items.length >= 5 || !newItem}>{t('addItem')}</Button>
                     </form>
                 )}
 
@@ -55,7 +57,7 @@ export function Wishlist({ roomId, items, readOnly = false }: { roomId?: string,
                         </li>
                     ))}
                     {items.length === 0 && (
-                        <li className="text-muted-foreground text-sm italic">No items yet.</li>
+                        <li className="text-muted-foreground text-sm italic">{t('empty')}</li>
                     )}
                 </ul>
             </CardContent>
