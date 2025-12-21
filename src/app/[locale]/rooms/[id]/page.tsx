@@ -27,7 +27,7 @@ export default async function RoomPage({ params }: { params: Promise<{ id: strin
         return notFound()
     }
 
-    const currentUserParticipant = room.participants.find((p: any) => p.user_id === user.id)
+    const currentUserParticipant = room.participants.find((p: any) => p.user_id === user?.id)
 
     // Fetch Target if paired
     let targetProfile = null
@@ -43,7 +43,7 @@ export default async function RoomPage({ params }: { params: Promise<{ id: strin
         }
     }
 
-    const isAdmin = room.created_by === user.id
+    const isAdmin = room.created_by === user?.id
     const isClosed = room.status !== 'open'
 
     // Status translation map

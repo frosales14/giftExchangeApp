@@ -17,7 +17,6 @@ export function LanguageSwitcher() {
     const pathname = usePathname();
 
     const handleLocaleChange = (newLocale: string) => {
-        // @ts-expect-error -- known next-intl type issue with dynamic routes sometimes, but standard usage
         router.replace({ pathname }, { locale: newLocale });
     };
 
