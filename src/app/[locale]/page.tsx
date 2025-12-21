@@ -27,12 +27,12 @@ export default async function Home() {
           </p>
         </div>
 
-        <div className="flex gap-4">
-          <Link href="/dashboard">
-            <Button size="lg" className="text-lg px-8">{t('getStarted')}</Button>
+        <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto max-w-xs sm:max-w-none">
+          <Link href="/dashboard" className="w-full sm:w-auto">
+            <Button size="lg" className="text-lg px-8 w-full">{t('getStarted')}</Button>
           </Link>
-          <Link href="/login">
-            <Button variant="outline" size="lg" className="text-lg px-8">{t('login')}</Button>
+          <Link href="/login" className="w-full sm:w-auto">
+            <Button variant="outline" size="lg" className="text-lg px-8 w-full">{t('login')}</Button>
           </Link>
         </div>
 
