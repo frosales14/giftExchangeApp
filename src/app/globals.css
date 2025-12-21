@@ -110,57 +110,61 @@
 }
 
 .dark {
-  /* Palette: Christmas App Palette (Dark Mode - Evergreen/Midnight Base) */
-  --background: #0F3D2E;
-  /* evergreen */
-  --foreground: #F5E6C8;
-  /* champagne */
+  /* Palette: Christmas App Palette (Dark) */
+  --background: #0B0F14;
+  /* midnightCharcoal */
+  --foreground: #F3F4F6;
+  /* snowWhite */
 
   --card: #1F2933;
-  /* midnightCharcoal */
-  --card-foreground: #F5E6C8;
+  /* secondary midnight base */
+  --card-foreground: #F3F4F6;
 
-  --popover: #1F2933;
-  --popover-foreground: #F5E6C8;
+  --popover: #0B0F14;
+  --popover-foreground: #F3F4F6;
 
-  --primary: #B11226;
+  --primary: #8F0E1F;
   /* christmasRed */
-  --primary-foreground: #FAFAFA;
+  --primary-foreground: #F3F4F6;
 
-  --secondary: #D4AF37;
-  /* goldStar (Gold acts as secondary in dark mode) */
-  --secondary-foreground: #1F2933;
-
-  --muted: #1F6F54;
+  --secondary: #164E3B;
   /* pineGreen */
-  --muted-foreground: #E5E7EB;
+  --secondary-foreground: #F3F4F6;
+
+  --muted: #0A2B20;
+  /* evergreen */
+  --muted-foreground: #9CA3AF;
   /* frostGray */
 
-  --accent: #1F6F54;
-  --accent-foreground: #FAFAFA;
+  --accent: #E0C15A;
+  /* goldStar */
+  --accent-foreground: #0B0F14;
 
-  --destructive: #8C1D18;
-  --destructive-foreground: #FAFAFA;
+  --destructive: #6E1613;
+  /* cranberry */
+  --destructive-foreground: #F3F4F6;
 
-  --border: #1F6F54;
-  --input: #1F6F54;
-  --ring: #D4AF37;
+  --border: #164E3B;
+  /* pineGreen */
+  --input: #164E3B;
+  --ring: #E0C15A;
+  /* goldStar */
 
-  --chart-1: #D4AF37;
-  --chart-2: #B11226;
-  --chart-3: #1F6F54;
-  --chart-4: #F5E6C8;
-  --chart-5: #8C1D18;
+  --chart-1: #8F0E1F;
+  --chart-2: #164E3B;
+  --chart-3: #E0C15A;
+  --chart-4: #0A2B20;
+  --chart-5: #6E1613;
 
-  --sidebar: #1F2933;
-  /* midnightCharcoal */
-  --sidebar-foreground: #F5E6C8;
-  --sidebar-primary: #B11226;
-  --sidebar-primary-foreground: #FAFAFA;
-  --sidebar-accent: #0F3D2E;
-  --sidebar-accent-foreground: #F5E6C8;
-  --sidebar-border: #1F6F54;
-  --sidebar-ring: #D4AF37;
+  --sidebar: #0A2B20;
+  /* evergreen */
+  --sidebar-foreground: #F3F4F6;
+  --sidebar-primary: #8F0E1F;
+  --sidebar-primary-foreground: #F3F4F6;
+  --sidebar-accent: #164E3B;
+  --sidebar-accent-foreground: #F3F4F6;
+  --sidebar-border: #164E3B;
+  --sidebar-ring: #E0C15A;
 }
 
 @layer base {

@@ -4,13 +4,15 @@ import { Button } from "@/components/ui/button"
 import { Card, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
 import { Gift, Users, Shuffle } from 'lucide-react'
 import { LanguageSwitcher } from '@/components/language-switcher'
+import { ThemeToggle } from '@/components/theme-toggle'
 
 export default async function Home() {
   const t = await getTranslations('Landing');
 
   return (
     <div className="min-h-screen bg-background text-foreground flex flex-col relative">
-      <div className="absolute top-4 right-4">
+      <div className="absolute top-4 right-4 flex items-center gap-2">
+        <ThemeToggle />
         <LanguageSwitcher />
       </div>
 

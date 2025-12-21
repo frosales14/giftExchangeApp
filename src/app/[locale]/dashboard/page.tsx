@@ -6,6 +6,7 @@ import { Card, CardHeader, CardTitle, CardDescription } from "@/components/ui/ca
 import { JoinRoomForm } from '@/components/join-room-form'
 import { getTranslations } from 'next-intl/server'
 import { LanguageSwitcher } from '@/components/language-switcher'
+import { ThemeToggle } from '@/components/theme-toggle'
 
 export default async function DashboardPage() {
     const supabase = await createClient()
@@ -22,7 +23,7 @@ export default async function DashboardPage() {
     const { data: participations } = await supabase
         .from('participants')
         .select('room_id, rooms(*)')
-        .eq('user_id', user.id)
+        .eq('user_id', user?.id)
 
     const rooms = participations?.map((p: any) => p.rooms) || []
 
@@ -31,6 +32,7 @@ export default async function DashboardPage() {
             <header className="flex justify-between items-center">
                 <h1 className="text-3xl font-bold tracking-tight">{t('title')}</h1>
                 <div className="flex items-center gap-2">
+                    <ThemeToggle />
                     <LanguageSwitcher />
                     <CreateRoomDialog />
                 </div>

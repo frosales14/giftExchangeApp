@@ -5,6 +5,9 @@ import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
+import { ThemeProvider } from "@/components/theme-provider";
+import SnowShow from "@/components/snow/SnowShow";
+
 
 const cinzel = Cinzel({
   variable: "--font-cinzel",
@@ -40,12 +43,20 @@ export default async function RootLayout({
   const messages = await getMessages();
 
   return (
-    <html lang={locale}>
+    <html lang={locale} suppressHydrationWarning>
       <body
         className={`${cinzel.variable} ${geistMono.variable} antialiased`}
       >
         <NextIntlClientProvider messages={messages}>
-          {children}
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            {children}
+            <SnowShow />
+          </ThemeProvider>
         </NextIntlClientProvider>
       </body>
     </html>
